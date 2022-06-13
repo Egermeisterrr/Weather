@@ -42,7 +42,8 @@ class MainActivity : AppCompatActivity() {
                 val location = obj.getJSONObject("location")
 
                 val textResource = resources.getString(R.string.weatherInLondon)
-                val currentTemp = current.getString("temp_c").toInt()
+                val currentTemp = current.getString("temp_c")
+                Log.d("MyLog", "R: $currentTemp")
                 val currentTempText = String.format(textResource, currentTemp)
 
                 // установили значение текущей температуры для TextView

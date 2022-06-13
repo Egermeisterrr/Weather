@@ -3,6 +3,6 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="getWeather">get</string>
-    <string name="weatherInLondon">Temperature in London:% 1 $ d C</string>
+    <string name="weatherInLondon">Temperature in London:% 1 $ s C</string>
     <string name="press">Press the button</string>
 </resources>
