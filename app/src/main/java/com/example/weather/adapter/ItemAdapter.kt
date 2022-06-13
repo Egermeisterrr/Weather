@@ -1,14 +1,13 @@
 package com.example.weather.adapter
 
-import android.content.Context
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.weather.data.DayItem
 
-class MyAdapter(
+class ItemAdapter(
     private val dataset: ArrayList<DayItem>
-): RecyclerView.Adapter<MyAdapter.MyViewHolder>() {
+): RecyclerView.Adapter<ItemAdapter.MyViewHolder>() {
     class MyViewHolder(
         private val view: View,
     ) : RecyclerView.ViewHolder(view) {
