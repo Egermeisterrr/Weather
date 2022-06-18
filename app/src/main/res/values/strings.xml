@@ -3,6 +3,12 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="getWeather">get</string>
-    <string name="weatherInLondon">Temperature in London:% 1 $ s C</string>
     <string name="press">Press the button</string>
+    <string name="hours">Hours</string>
+    <string name="london">London</string>
+    <string name="_20_c">20°C</string>
+    <string name="_17_06_2020_18_20">17-06-2020 18:20</string>
+    <string name="days">Days</string>
+    <string name="sunny">Sunny</string>
+    <string name="_34_c_15_c">34°C/15°C</string>
 </resources>
