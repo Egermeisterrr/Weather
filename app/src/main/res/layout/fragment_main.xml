@@ -61,13 +61,13 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/tvSity"
+                android:id="@+id/tvCity"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="sans-serif-condensed"
                 android:text="@string/london"
                 android:textColor="@color/white"
-                android:textSize="24sp"
+                android:textSize="28sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/imWeather" />
@@ -79,10 +79,10 @@
                 android:fontFamily="sans-serif-condensed"
                 android:text="@string/_20_c"
                 android:textColor="@color/white"
-                android:textSize="60sp"
+                android:textSize="55sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tvSity" />
+                app:layout_constraintTop_toBottomOf="@+id/tvCity" />
 
             <TextView
                 android:id="@+id/tvSunny"
@@ -91,7 +91,7 @@
                 android:fontFamily="sans-serif-condensed"
                 android:text="@string/sunny"
                 android:textColor="@color/white"
-                android:textSize="16sp"
+                android:textSize="20sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tvCurrentTemp" />
@@ -103,7 +103,7 @@
                 android:fontFamily="sans-serif-condensed"
                 android:text="@string/_34_c_15_c"
                 android:textColor="@color/white"
-                android:textSize="16sp"
+                android:textSize="20sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tvSunny" />
@@ -137,23 +137,25 @@
     </androidx.cardview.widget.CardView>
 
     <com.google.android.material.tabs.TabLayout
-        android:id="@+id/tab"
+        android:id="@+id/tabLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
         android:layout_marginTop="5dp"
+        android:layout_marginEnd="5dp"
         android:backgroundTint="@color/weather_bg"
         app:layout_constraintEnd_toEndOf="@+id/card"
         app:layout_constraintStart_toStartOf="@+id/card"
-        app:layout_constraintTop_toBottomOf="@+id/card">
+        app:layout_constraintTop_toBottomOf="@+id/card"
+        app:tabIndicatorColor="@color/white"
+        app:tabTextColor="@color/white">
 
         <com.google.android.material.tabs.TabItem
-            android:id="@+id/hours"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/hours" />
 
         <com.google.android.material.tabs.TabItem
-            android:id="@+id/days"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/days" />
@@ -161,13 +163,13 @@
     </com.google.android.material.tabs.TabLayout>
 
     <androidx.viewpager2.widget.ViewPager2
-        android:id="@+id/vp"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginBottom="5dp"
+        android:layout_marginTop="3dp"
+        android:layout_marginBottom="3dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/tab"
-        app:layout_constraintStart_toStartOf="@+id/tab"
-        app:layout_constraintTop_toBottomOf="@+id/tab" />
+        app:layout_constraintEnd_toEndOf="@id/tabLayout"
+        app:layout_constraintStart_toStartOf="@+id/tabLayout"
+        app:layout_constraintTop_toBottomOf="@+id/tabLayout" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

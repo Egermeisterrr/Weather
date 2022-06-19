@@ -1,15 +1,16 @@
 package com.example.weather
 
-import android.net.Uri
+
+import android.annotation.SuppressLint
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.core.net.toUri
 import com.android.volley.Request
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
+import com.bumptech.glide.Glide
 import com.example.weather.databinding.ActivityMainBinding
 import com.example.weather.fragments.MainFragment
 import org.json.JSONObject
@@ -30,8 +31,20 @@ class MainActivity : AppCompatActivity() {
             .commit()
 
         getResult("Minsk")
+
+        /*val imSearch: ImageButton = findViewById(R.id.imSearch)
+        val imSync: ImageButton = findViewById(R.id.imSync)
+
+        imSearch.setOnClickListener {
+            search()
+        }
+
+        imSync.setOnClickListener {
+            sync()
+        }*/
     }
 
+    @SuppressLint("SetTextI18n")
     private fun getResult(name: String) {
         val url = "https://api.weatherapi.com/v1/forecast" +
                 ".json?key=$API_KEY&q=$name&days=5&aqi=no&alerts=no"
@@ -46,14 +59,14 @@ class MainActivity : AppCompatActivity() {
                 val location = obj.getJSONObject("location")
 
                 // город
-                val tvCity: TextView = findViewById(R.id.tvSity)
+                val tvCity: TextView = findViewById(R.id.tvCity)
                 tvCity.text = name
                 Log.d("MyLog", "sity: $name")
 
                 // текущая температура
                 val currentTemp = current.getString("temp_c")
                 val tvCurrentTemp : TextView = findViewById(R.id.tvCurrentTemp)
-                tvCurrentTemp.text = currentTemp
+                tvCurrentTemp.text = "$currentTemp°C"
                 Log.d("MyLog", "temp: $currentTemp")
 
                 // локальное время
@@ -70,22 +83,24 @@ class MainActivity : AppCompatActivity() {
                 Log.d("MyLog", "pupa: $sunny")
 
                 // мин/макс темпа
-                val forecast = obj.getJSONObject("forecast")
-                Log.d("MyLog", "forecast: $forecast")
-                val forecastDay = forecast.getJSONArray("forecastday")
-                Log.d("MyLog", "forecast: $forecastDay")
-                //val day = forecast.getJSONObject("day")
-                //Log.d("MyLog", "forecast: $day")
-                /*val maxTemp = day.getString("maxtemp_c")
-                Log.d("MyLog", "forecast: $maxTemp")
+                val day = obj.getJSONObject("forecast")
+                    .getJSONArray("forecastday")
+                    .getJSONObject(0)
+                    .getJSONObject("day")
+                Log.d("MyLog", "day: $day")
+                val maxTemp = day.getString("maxtemp_c")
+                Log.d("MyLog", "maxTemp: $maxTemp")
                 val minTemp = day.getString("mintemp_c")
-                Log.d("MyLog", "forecast: $minTemp")*/
+                Log.d("MyLog", "minTemp: $minTemp")
+                val tvMinMax: TextView = findViewById(R.id.tvMinMax)
+                tvMinMax.text = "$maxTemp°C/$minTemp°C"
 
                 // картинка санни
-                val imSunny = condition.getString("icon")
+                val imSunny = ("https:" + condition.getString("icon"))
                 val imWeather: ImageView = findViewById(R.id.imWeather)
-                val imUri: Uri = ("https:$imSunny").toUri()
-                imWeather.setImageURI(imUri)
+                Glide.with(this)
+                    .load(imSunny)
+                    .into(imWeather)
             },
             {
                 Log.d("MyLog", "Volley error: $it")
@@ -94,5 +109,15 @@ class MainActivity : AppCompatActivity() {
 
         val queue = Volley.newRequestQueue(this)
         queue.add(stringRequest)
+    }
+
+    private fun search() {
+        // 1.открыть клавиатуру
+        // 2.организовать ввод города
+        // 3.продумать что делать если такого города нет
+    }
+
+    private fun sync() {
+        //понять что вообще делает эта кнопка
     }
 }
